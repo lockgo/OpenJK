@@ -720,6 +720,14 @@ void DeathFX( gentity_t *ent )
 		G_PlayEffect( "env/med_explode", effectPos );
 		break;
 
+	case CLASS_VEHICLE:
+		VectorCopy(ent->currentOrigin, effectPos);
+		effectPos[2] -= 10;
+		G_PlayEffect("ships/ship_explosion_mark", effectPos);
+		G_PlayEffect("env/med_explode", effectPos);
+		G_SoundOnEnt(ent, CHAN_AUTO, "sound/chars/mark2/misc/mark2_explo");
+		break;
+
 	default:
 		break;
 
